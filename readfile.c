@@ -1,70 +1,117 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "struct.h"
-#include "struct.h"
+//#include "struct.h"
 #include "book.h"
-void readFile(Book *head){
-    FILE *fp;
-    fp=fopen("book.txt","r");//open the file
-    if(fp==NULL){
+void readFile(){
+    FILE *fp1,*fp2;
+    fp1=fopen("book.txt","r");//open the file
+    fp2=fopen("student.txt","r");
+    if(fp1==NULL){
 		printf("cannot open file\n");
 	}
-    writeBook(fp,head);
-    fclose(fp);
+	Book *Bhead;
+	Student *Shead;
+	Bhead = (Book*)malloc(sizeof(Book));
+	//head=NULL;
+	Shead = (Student*)malloc(sizeof(Student));
+    writeBook(fp1,Bhead);
+    writeStudent(fp2,Shead);
+    dispBook(Bhead);
+    dispStudent(Shead);
+    fclose(fp1);
+    fclose(fp2);
     return;
 }
 void writeBook(FILE *fp,Book *head){
+    //printf("111");
+    Book *node,*end;//*head,
+  //  head = (Book*)malloc(sizeof(Book));
+    //head = node;
+    end=head;
+    //end->next = NULL;
     int n=0;
-    head=NULL;
-    Book *p;
-	//Book p2,p,pr=NULL;
-   // if(head->next == NULL){
-        while(!feof(fp)){
-                n++;
-                p=(book)malloc(sizeof(struct book));
-                fread(p,sizeof(struct book),1,fp);     //将fp所指向的文件中的内容赋给p
-                if(n==1){
-	                head=p;
-	              //  p2=p;
-	             }
-	             else{       //创建链表
-                  //  pr=p2;
-	    	        head->next=p;
-	           	  //  p2=p;
-	             }
-          }
-          dispBook(head);
- //   }
- //   else{
-  //      writeBook( fp,head->next );
-  //  }
-   /* if(pr!=NULL)
-        pr->next=NULL;
-    else
-        head=NULL;*/
-    return *head;
+    //lseek(fp,0,SEEK_SET);
+    //int num=0;
+    while(!feof(fp)){
+        //    printf("%s",fp);
+        //   printf("111");
+          struct book temp;
+          n++;
+          node = (Book*)malloc(sizeof(Book));
+          fscanf(fp,"%s%s%s",temp.numberB,temp.nameB,temp.writer);
+           // fread(node,sizeof(struct book),1,fp);     //将fp所指向的文件中的内容赋给p
+        //  printf("%d",n);
+          strcpy(node->numberB,temp.numberB);
+           strcpy(node->nameB,temp.nameB);
+           strcpy(node->writer,temp.writer);
+        //   printf("%s%s%s\n",node->numberB,node->nameB,node->writer);
+
+
+           end->next=node;
+           end = node;
+
+    }
+    end->next=NULL;
+
+   // dispBook(head);
+    return; //head;// head;
 }
-void dispBook(Book *head)
+void  dispBook(Book *head)//(struct student *head)
 {
-Book *p=head->next;//定义一个结点指针p指向头结点的下一个结点
-while(p){ //如果p不为空则循环
-printf("%d",head);
-p=p->next;//移动指针p遍历链表
+    struct book* pointer;
+    pointer=head->next; //跳过无数据的头结点
+    while(pointer!=NULL)
+        {
+       printf("%s %s %s\n",pointer->numberB,pointer->nameB,pointer->writer);
+        pointer=pointer->next;//指向下一个节点
+        }
+    return;
 }
+
+void writeStudent(FILE *fp,Student *head){
+       Student *node,*end;//*head,
+  //  head = (Book*)malloc(sizeof(Book));
+    //head = node;
+    end=head;
+    //end->next = NULL;
+    int n=0;
+    //lseek(fp,0,SEEK_SET);
+    //int num=0;
+    while(!feof(fp)){
+        //    printf("%s",fp);
+        //   printf("111");
+          struct regist temp;
+          n++;
+          node = (Student*)malloc(sizeof(Student));
+          fscanf(fp,"%s%s",temp.numberR,temp.nameR);//,temp.writer);
+           // fread(node,sizeof(struct book),1,fp);     //将fp所指向的文件中的内容赋给p
+        //  printf("%d",n);
+          strcpy(node->numberR,temp.numberR);
+           strcpy(node->nameR,temp.nameR);
+        //   strcpy(node->writer,temp.writer);
+        //   printf("%s%s%s\n",node->numberB,node->nameB,node->writer);
+
+
+           end->next=node;
+           end = node;
+
+    }
+    end->next=NULL;
+
+   // dispBook(head);
+    return; //head;// head;
 }
-    /*for (int n=0;!feof(fp);n++){
-        char oneBook[1024];
-        fgets(oneBook,sizeof(oneBook),fp);
+void dispStudent(Student *head){
+    struct regist* pointer;
+    pointer=head->next; //跳过无数据的头结点
+    while(pointer!=NULL)
+        {
+       printf("%s %s\n",pointer->numberR,pointer->nameR);//,pointer->writer);
+        pointer=pointer->next;//指向下一个节点
+        }
+    return;
+}
 
-    }*/
-         /*   char *oneBook;
-            oneBook=(char*)malloc(1024*sizeof(char));
-            fgets(oneBook,sizeof(oneBook),fp);
-            int kind=1;
-            for( int n=0;n<strlen(oneBook);n++){  //--->在遍历一遍将每个值赋给同一阶级相应的值
-                if(oneBook[n]==','&&king%3==1){
 
-                }
-            }          */
 
-       // fgets(oneBook,sizeof(oneBook),fp);

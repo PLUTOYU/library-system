@@ -2,7 +2,7 @@
 #include "stdlib.h"
 #include "struct.h"
 #include "book.h"
-void menu(Book *head){
+void menu(){
     printf("----------------\n");
     printf(" Library System \n");
     printf("----------------\n");
@@ -13,8 +13,9 @@ void menu(Book *head){
     int choice;
     scanf("%d",&choice);
     if(choice==1)
-        printf("2");
-        readFile(head);
+        printf("2\n");
+        readFile();
+        //readFile(head);
     if(choice==2)
         printf("3");
     return;

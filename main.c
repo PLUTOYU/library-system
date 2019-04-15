@@ -6,8 +6,8 @@
 int main(){
  //void menu();
  //int choice;
- Book *book;
- menu(book);
+ //Book *book;
+ menu();
 /* scanf("%d",&choice);
  if(choice==1)
     printf("2");

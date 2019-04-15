@@ -2,21 +2,21 @@
 #define STRUCT_H_INCLUDED
 //#define N sizeof(struct book)
 
-struct regist{
+typedef struct regist{
     char numberR[10];
     char nameR[20];
     char bookBorrow[20];
     char bookReturn[20];
     struct regist *next;
-};
-typedef struct regist Read;
-struct book{
-    char numberB[10];
+}Student;
+//typedef struct regist Read;
+typedef struct book{
+    char numberB[20];
     char nameB[20];
     char writer[20];
     struct book *next;
-};
-typedef struct book Book;
-typedef Book *book;
+}Book;
+ //struct book ;
+ //typedef Book *book;
 
 #endif // STRUCT_H_INCLUDED
