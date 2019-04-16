@@ -3,27 +3,32 @@
 #include "struct.h"
 //#include "struct.h"
 #include "book.h"
+#include "addData.h"
 void readFile(){
     FILE *fp1,*fp2;
-    fp1=fopen("book.txt","r");//open the file
-    fp2=fopen("student.txt","r");
+    fp1=fopen("book.txt","r+");//open the file
+   // fp2=fopen("student.txt","r");
     if(fp1==NULL){
 		printf("cannot open file\n");
 	}
+  /*  if(fp2==NULL){
+		printf("cannot open file\n");
+	}*/
 	Book *Bhead;
-	Student *Shead;
+	//Student *Shead;
 	Bhead = (Book*)malloc(sizeof(Book));
-	//head=NULL;
-	Shead = (Student*)malloc(sizeof(Student));
-    writeBook(fp1,Bhead);
-    writeStudent(fp2,Shead);
-    dispBook(Bhead);
-    dispStudent(Shead);
+	                             //head=NULL;
+	//Shead = (Student*)malloc(sizeof(Student));
+    int m=writeBook(fp1,Bhead);
+    addbook(m,fp1);
+  //  writeStudent(fp2,Shead);
+  //  dispBook(Bhead);
+  //  dispStudent(Shead);
     fclose(fp1);
-    fclose(fp2);
+  //  fclose(fp2);
     return;
 }
-void writeBook(FILE *fp,Book *head){
+int writeBook(FILE *fp,Book *head){
     //printf("111");
     Book *node,*end;//*head,
   //  head = (Book*)malloc(sizeof(Book));
@@ -31,22 +36,25 @@ void writeBook(FILE *fp,Book *head){
     end=head;
     //end->next = NULL;
     int n=0;
+    struct book temp;
     //lseek(fp,0,SEEK_SET);
     //int num=0;
-    while(!feof(fp)){
+    while(fscanf(fp,"%s%s%s",temp.numberB,temp.nameB,temp.writer)!=EOF){//!feof(fp)
         //    printf("%s",fp);
         //   printf("111");
-          struct book temp;
+         // struct book temp;
           n++;
           node = (Book*)malloc(sizeof(Book));
-          fscanf(fp,"%s%s%s",temp.numberB,temp.nameB,temp.writer);
+        //  fscanf(fp,"%s%s%s",temp.numberB,temp.nameB,temp.writer);
            // fread(node,sizeof(struct book),1,fp);     //将fp所指向的文件中的内容赋给p
-        //  printf("%d",n);
+
+         //  printf("%s%s%s\n",temp.numberB,temp.nameB,temp.writer);
+        //  printf("%s%s%s\n",node->numberB,node->nameB,node->writer);
           strcpy(node->numberB,temp.numberB);
            strcpy(node->nameB,temp.nameB);
            strcpy(node->writer,temp.writer);
-        //   printf("%s%s%s\n",node->numberB,node->nameB,node->writer);
 
+           printf("%d\n",n);
 
            end->next=node;
            end = node;
@@ -55,7 +63,7 @@ void writeBook(FILE *fp,Book *head){
     end->next=NULL;
 
    // dispBook(head);
-    return; //head;// head;
+    return n; //head;// head;
 }
 void  dispBook(Book *head)//(struct student *head)
 {
@@ -112,6 +120,7 @@ void dispStudent(Student *head){
         }
     return;
 }
+
 
 
 
