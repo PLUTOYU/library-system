@@ -5,6 +5,7 @@
 typedef struct regist{
     char numberR[10];
     char nameR[20];
+    char password[20];
     char bookBorrow[20];
     char bookReturn[20];
     struct regist *next;

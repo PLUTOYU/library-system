@@ -14,6 +14,7 @@ void menu(){
     scanf("%d",&choice);
     if(choice==1)
         printf("2\n");
+        getchar();
         readFile();
         //readFile(head);
     if(choice==2)
