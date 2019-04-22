@@ -1,0 +1,6 @@
+studentID userName Password  recordBorrow  recordReturn
+1 tony shui /no /no
+2 kim wuie /no /no
+3 Alice kuiy /buk/wet no/no
+4 SHY shuij /oop /no
+5 amy qwqw 0 0

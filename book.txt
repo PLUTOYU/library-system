@@ -1,0 +1,7 @@
+Serial Name Writer Total Left
+1 dog dogs 24 24
+2 buk buks 30 30
+3 wet wets 20 20
+4 cats cats 20 20
+5 temp temper 12 12
+6 bui buibui 12 12
