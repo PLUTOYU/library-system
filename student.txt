@@ -1,6 +1,12 @@
 studentID userName Password  recordBorrow  recordReturn
-1 tony shui /no /no
-2 kim wuie /no /no
-3 Alice kuiy /buk/wet no/no
-4 SHY shuij /oop /no
-5 amy qwqw 0 0
+150000|/no|/no|/no|/no
+160009|klyn|shshsh!|/Sing,Unburied,Sing|/no
+161000|SUNNY|shaduij|/no|/no
+161299|KITTY|kiuyt|/no|/no
+162345|ANNY|shui,jk|/no|/no
+163456|Ammy|qwedf|/Baby's Very First Touchy Feely Colours Play Book/Sing,Unburied,Sing|/no/no
+171000|SHY|qazxs|/White Teeth|/no
+171005|QET|WYERTY|/no|/no
+171876|peter|qazxsw|/no|/no
+171900|wendy|wendty|/no|/no
+172000|QAZS|chaoshi|/Harry Potter and the Chamber of Secrets|/no

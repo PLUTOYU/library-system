@@ -7,4 +7,6 @@ extern void dispBook(Book *head);
 extern void dispStudent(Student *head);
 extern void writeFileB(Book *head);
 extern void writeFileS(Student *head);
+extern void destroyB(Book *head);
+extern void destroyS(Student *head);
 #endif // READFILE_H_INCLUDED

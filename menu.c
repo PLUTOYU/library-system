@@ -4,20 +4,25 @@
 #include "login.h"
 #include "book.h"
 #include "readFile.h"
-void start()
+void start()      //start library system
 {
     int choice=0,flag=1;
     printf("  Library system start(1.yes 2.no):  ");
     scanf("%d",&choice);getchar();
+    if(choice>2||choice<1)
+    {
+        printf("   input invalid data!   ");
+        return;
+    }
     if(choice==1)
-        {
-            Book *Bhead;
-            Bhead = (Book*)malloc(sizeof(Book));
-            Student *Shead;
-            Shead = (Student*)malloc(sizeof(Student));
-            readFile(Bhead,Shead);
-            menu(Bhead,Shead);
-        }
+    {
+        Book *Bhead;                                       //create the head node and malloc it
+        Bhead = (Book*)malloc(sizeof(Book));
+        Student *Shead;
+        Shead = (Student*)malloc(sizeof(Student));
+        readFile(Bhead,Shead);                           //read book.txt and student.txt file
+        menu(Bhead,Shead);                               //output library's menu
+    }
     return;
 }
 void menu(Book *Bhead,Student *Shead)
@@ -36,29 +41,33 @@ void menu(Book *Bhead,Student *Shead)
 
     switch(choice)
 		{
-			case 1:
+			case 1:                                 // login first then reader entrance
 			    ID=checkID(Shead);
 			    if(ID!=0)
                     subMenu1(Bhead,Shead,ID);
                 else
                     menu(Bhead,Shead);
 			    break;
-            case 2:
+            case 2:                                  //login staff then administrator entrance
                 if(checkStaff()==1)
                     subMenu2(Bhead,Shead);
                 else
                     menu(Bhead,Shead);
                 break;
             case 3:
-                ID=regist(Shead);
+                ID=regist(Shead);                    //login new student
                 if(ID!=0)
                     subMenu1(Bhead,Shead,ID);
                 else
                     menu(Bhead,Shead);
                 break;
             case 4:
-               // writeFileB(Bhead);
+                writeFileB(Bhead);                    //free the linked list
                 writeFileS(Shead);
+                destroyB(Bhead);
+                destroyS(Shead);
+                free(Bhead);
+                free(Shead);
             default:
                // writeFile(Bhead);
                 break;
@@ -82,22 +91,23 @@ void subMenu1(Book *Bhead,Student *Shead,int ID)
     switch(choice)
 		{
 			case 1:
-                bookBorrow(Bhead,Shead,ID);
+                bookBorrow(Bhead,Shead,ID);                 //borrow books
                 subMenu1(Bhead,Shead,ID);
 			    break;
             case 2:
-                bookReturn(Bhead,Shead,ID);
+                bookReturn(Bhead,Shead,ID);                  //return books
+                subMenu1(Bhead,Shead,ID);
                 break;
             case 3:
-                bookQuery(Bhead);
+                bookQuery(Bhead);                            //query books
                 subMenu1(Bhead,Shead,ID);
                 break;
             case 4:
-                dispBook(Bhead);
+                dispBook(Bhead);                              //view all the books
                 subMenu1(Bhead,Shead,ID);
                 break;
             case 5:
-                menu(Bhead,Shead);
+                menu(Bhead,Shead);                            //return the last menu
                 break;
             default:
                 break;
@@ -121,23 +131,23 @@ void subMenu2(Book *Bhead,Student *Shead)
     switch(choice)
 		{
 			case 1:
-                addBook(Bhead);
+                addBook(Bhead);                                  //add books
                 subMenu2(Bhead,Shead);
 			    break;
             case 2:
-                deleBook(Bhead);
+                deleBook(Bhead);                                 //delete books
                 subMenu2(Bhead,Shead);
                 break;
             case 3:
-                dispStudent(Shead);
+                dispStudent(Shead);                              //view all register information
                 subMenu2(Bhead,Shead);
                 break;
             case 4:
-                dispBook(Bhead);
+                dispBook(Bhead);                                 //view all register information
                 subMenu2(Bhead,Shead);
                 break;
             case 5:
-                menu(Bhead,Shead);
+                menu(Bhead,Shead);                                //return to the last menu
                 break;
             default:
                 menu(Bhead,Shead);
@@ -169,11 +179,13 @@ void newRegist()
     printf("   --------------------------------     \n");
     printf("          new register                  \n");
     printf("   --------------------------------     \n");
-    printf("   new student ID(5 integers):   \n");
+    printf("   new student ID(5 INTERGEERS):        \n");
     printf("   --------------------------------     \n");
-    printf("   new user name(5 integers):    \n");
+    printf("   new user name:                       \n");
     printf("   --------------------------------     \n");
-    printf("   new password(5 word):         \n");
+    printf("   new password(more than 5 WORDS):     \n");
+    printf("   --------------------------------     \n");
+    printf("   ");
 }
 void queryMenu()
 {
@@ -181,5 +193,6 @@ void queryMenu()
     printf("          Query Books                   \n");
     printf("   --------------------------------     \n");
     printf("   Enter book's message (1.name|2.writer):   \n");
-
+    printf("   --------------------------------     \n");
+    printf("   ");
 }

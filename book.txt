@@ -1,7 +1,14 @@
 Serial Name Writer Total Left
-1 dog dogs 24 24
-2 buk buks 30 30
-3 wet wets 20 20
-4 cats cats 20 20
-5 temp temper 12 12
-6 bui buibui 12 12
+1|Sing,Unburied,Sing|Ward,Jesmyn|24|22
+3|Baby's Very First Touchy Feely Colours Play Book|Baggott, Stella|20|19
+4|Killers of the Flower Moon: The Osage Murders and the Birth of the FBI|Grann, David|21|21
+5|Woman of No Importance: The Untold Story of WWII's MostDangerous Spy, Virginia Hall|Purnell, Sonia|12|12
+7|The Underground Railroad|Whitehead,Colson|14|14
+8|The Good Lord Bird|McBride,James|15|15
+9|White Teeth|Smith,Zadie|15|14
+10|Harry Potter and the Philosopher's Stone|J.K.Rowling|6|6
+11|Harry Potter and the Chamber of Secrets|J.K.Rowling|6|5
+12|Harry Potter and the Prisoner of Azkaban|J.K.Rowling|6|6
+13|Harry Potter and the Goblet of Fire|J.K.Rowling|6|6
+14|Harry Potter and the Order of the Phoenix|J.K.Rowling|6|6
+13|gyuil uijuh's|wyehuijgh|12|12
