@@ -1,14 +1,18 @@
 Serial Name Writer Total Left
-1|Sing,Unburied,Sing|Ward,Jesmyn|24|22
+1|Sing, Unburied, Sing|Ward, Jesmyn|24|22
+2|The Friend|Nunez,Sigrid|30|30
 3|Baby's Very First Touchy Feely Colours Play Book|Baggott, Stella|20|19
 4|Killers of the Flower Moon: The Osage Murders and the Birth of the FBI|Grann, David|21|21
 5|Woman of No Importance: The Untold Story of WWII's MostDangerous Spy, Virginia Hall|Purnell, Sonia|12|12
-7|The Underground Railroad|Whitehead,Colson|14|14
-8|The Good Lord Bird|McBride,James|15|15
-9|White Teeth|Smith,Zadie|15|14
+6|The Letters of John Clare|Clare, John|12|12
+7|The Underground Railroad|Whitehead,Colson|14|13
+8|The Good Lord Bird|McBride,James|15|14
+9|White Teeth|Smith,Zadie|15|13
 10|Harry Potter and the Philosopher's Stone|J.K.Rowling|6|6
-11|Harry Potter and the Chamber of Secrets|J.K.Rowling|6|5
+11|Harry Potter and the Chamber of Secrets|J.K.Rowling|6|6
 12|Harry Potter and the Prisoner of Azkaban|J.K.Rowling|6|6
 13|Harry Potter and the Goblet of Fire|J.K.Rowling|6|6
 14|Harry Potter and the Order of the Phoenix|J.K.Rowling|6|6
-13|gyuil uijuh's|wyehuijgh|12|12
+15|We the Animals|Torres,Justin|12|12
+16|Island of Wings|Altenberg,Karin|9|9
+17|A portrait of the Artist as a Young Man|Joyce,James|1|0

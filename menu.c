@@ -33,7 +33,8 @@ void menu(Book *Bhead,Student *Shead)
     printf("  |    1.Reader entrance           |    \n\n");
     printf("  |    2.Administrator entrance    |    \n\n");
     printf("  |    3.new register              |    \n\n");
-    printf("  |    4.Leave out                 |    \n\n\n");
+    printf("  |    4.Save and Leave out        |    \n\n");
+    printf("  |    5.Don't Save and Leave out  |    \n\n\n");
     printf("   Your choice: ");
     int choice=0,ID=0;
     scanf("%d",&choice);
@@ -68,8 +69,12 @@ void menu(Book *Bhead,Student *Shead)
                 destroyS(Shead);
                 free(Bhead);
                 free(Shead);
-            default:
-               // writeFile(Bhead);
+                break;
+            default:                                  //free the linked list
+                destroyB(Bhead);
+                destroyS(Shead);
+                free(Bhead);
+                free(Shead);
                 break;
 		}
     return;
@@ -110,6 +115,7 @@ void subMenu1(Book *Bhead,Student *Shead,int ID)
                 menu(Bhead,Shead);                            //return the last menu
                 break;
             default:
+                menu(Bhead,Shead);
                 break;
 		}
     return;
@@ -156,7 +162,7 @@ void subMenu2(Book *Bhead,Student *Shead)
     return;
 }
 
-void Login()
+void Login()                  //student login menu
 {
     printf("   --------------------------------     \n");
     printf("           Login in                     \n");
@@ -165,7 +171,7 @@ void Login()
     printf("   --------------------------------     \n");
     printf("   ");
 }
-void LoginStaff()
+void LoginStaff()                    //library staff menu
 {
     printf("   --------------------------------     \n");
     printf("           Login in                     \n");
@@ -174,7 +180,7 @@ void LoginStaff()
     printf("   --------------------------------     \n");
     printf("   ");
 }
-void newRegist()
+void newRegist()                     //new register menu
 {
     printf("   --------------------------------     \n");
     printf("          new register                  \n");

@@ -10,15 +10,11 @@ int readFile(Book *Bhead,Student *Shead)
         FILE *fp1,*fp2;
         fp1=fopen("book.txt","r+");
         if(fp1==NULL)
-        {
             printf("cannot open book's file\n");
-        }
         int numB=writeBook(fp1,Bhead);
         fp2=fopen("student.txt","r+");
         if(fp2==NULL)
-        {
             printf("cannot open register's file\n");
-        }
         int numR=writeStudent(fp2,Shead);
         fclose(fp1);
         fclose(fp2);
@@ -79,10 +75,10 @@ void dispBook(Book *head)
     printf("  Serial Name Writer Total Left\n");
     pointer=head->next;
     while(pointer!=NULL)
-        {
+    {
         printf("  %d | %s | %s | %d | %d\n",pointer->serialNum,pointer->nameB,pointer->writer,pointer->totalNum,pointer->leftNum);
         pointer=pointer->next;
-        }
+    }
     return;
 }
 /*display student's linked list information, for library staff view
@@ -92,10 +88,10 @@ void dispStudent(Student *head){
     printf("  studentID userName Password  recordBorrow  recordReturn\n");
     pointer=head->next;
     while(pointer!=NULL)
-        {
+    {
         printf("  %d | %s | %s | %s | %s \n",pointer->stuID,pointer->nameR,pointer->passWord,pointer->reBorrow,pointer->reReturn);//,pointer->writer);
         pointer=pointer->next;
-        }
+    }
     return;
 }
 /*create book pointer to read book.txt again, rewrite the file's content
@@ -144,7 +140,7 @@ void writeFileS(Student *head)
 //free the book's linked list
 void destroyB(Book *head){
     if(head->next==NULL){
-       return;
+         return;
     }
     if(head->next!=NULL)
     {

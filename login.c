@@ -11,13 +11,13 @@ int checkID(Student *Shead)
     Login();
     int ID;
     char password [20];
-    scanf("%d %s",&ID,&password);getchar();
+    scanf("%d",&ID);getchar();
+    gets(password);
     Student *pointer;
     pointer=Shead;
     while(pointer->next != NULL)
     {
         pointer=pointer->next;
-        //dispStudent(pointer);
         if(pointer->stuID==ID&&strcmp(pointer->passWord,password)==0)
         {
             printf("    SUCCESS!   \n");
@@ -59,10 +59,16 @@ int regist(Student *Shead)
     if(strlen(temp->passWord)<5)          //check if password is less then 5 words
      {
          printf("     PLEASE input correct LENGTH PASSWORD!   \n");
+         //destroyS(temp);
+         free(temp);
+         temp=NULL;
          return 0;
      }
     if(temp->stuID<150000||temp->stuID>200000)         //check if student  ID is correct
      {
+         //destroyS(temp);
+         free(temp);
+         temp=NULL;
          printf("     PLEASE input correct ID!     \n");
          return 0;
      }
@@ -71,13 +77,16 @@ int regist(Student *Shead)
     strcpy(temp->reReturn,no);
     Student *scanner;
     scanner=Shead;
-    int b=0;
+    //int b=0;
     while(scanner->next!=NULL)
         {
             scanner=scanner->next;
             if(scanner->stuID==temp->stuID)              //check if input ID is repeated
                 {
                     printf("  FAIL! %d repeated!    \n",temp->stuID);
+                    //destroyS(temp);
+                    free(temp);
+                    temp=NULL;
                     return 0;
                 }
         }
@@ -104,6 +113,7 @@ int regist(Student *Shead)
     printf("      WELCOME %s !  \n",temp->nameR);
     int Q=temp->stuID;
     destroyS(temp);
+    //free(temp);
     temp=NULL;
     return Q;
 }

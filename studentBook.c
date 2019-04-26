@@ -37,64 +37,67 @@ void bookBorrow(Book *Bhead,Student *Shead,int ID)
     pointerB=Bhead;
     if(choice==1)                                       //use serial number to find book
     {
-       int sern=0;
-       printf("    ENTER book's serial number: ");
-       scanf("%d",&sern);
-       while(pointerB->next!=NULL)
+
+        int sern=0;
+        printf("    ENTER book's serial number: ");
+        scanf("%d",&sern);
+        while(pointerB->next!=NULL)
         {
-        pointerB=pointerB->next;
-        if(pointerB->serialNum==sern)
-        {
-            flag=1;
-            break;
-        }
-       }
-   }
-   if(choice==2)                                          //use writer and name to find book
-   {
-    char name[20],writer[20];
-    printf("   ENTER book's name: ");
-    gets(name);
-    printf("   ENTER book's writer: ");
-    gets(writer);//puts(writer);
-    while(pointerB->next!=NULL)
-    {
-        pointerB=pointerB->next;
-        if(strcasecmp(pointerB->nameB,name)==0&&strcasecmp(pointerB->writer,writer)==0)
-        {
-            flag=1;
-            break;
+
+             pointerB=pointerB->next;
+             if(pointerB->serialNum==sern)
+             {
+                 flag=1;
+                 break;
+             }
         }
     }
-   }
+    if(choice==2)                                          //use writer and name to find book
+    {
 
+        char name[20],writer[20];
+        printf("   ENTER book's name: ");
+        gets(name);
+        printf("   ENTER book's writer: ");
+        gets(writer);//puts(writer);
+        while(pointerB->next!=NULL)
+        {
+            pointerB=pointerB->next;
+            if(strcasecmp(pointerB->nameB,name)==0&&strcasecmp(pointerB->writer,writer)==0)
+            {
+                flag=1;
+                break;
+            }
+        }
+    }
     if(flag==1)                                //find out to borrow books
     {
-           int choice1=0;
-            printf("\n  %d  %s  %s  %d  %d \n",pointerB->serialNum,pointerB->nameB,pointerB->writer,pointerB->totalNum,pointerB->leftNum);
-            printf("  There are %d books to borrow. \n\n",pointerB->leftNum);
-            if(pointerB->leftNum>0)
+        int choice1=0;
+        printf("\n  %d  %s  %s  %d  %d \n",pointerB->serialNum,pointerB->nameB,pointerB->writer,pointerB->totalNum,pointerB->leftNum);
+        printf("  There are %d books to borrow. \n\n",pointerB->leftNum);
+        if(pointerB->leftNum>0)
+        {
+            printf("  SURE BORROW?(1.yes|2.no):");
+            scanf("%d",&choice1);
+            if(choice1==1)
             {
-                printf("  SURE BORROW?(1.yes|2.no):");
-                scanf("%d",&choice1);
-                if(choice1==1)
+                char no[]="no";
+                pointerB->leftNum=pointerB->leftNum-1;
+                if(strcasecmp(pointerS->reBorrow,"/no")==0)
                 {
-                    char no[]="no";
-                    pointerB->leftNum=pointerB->leftNum-1;
-                    if(strcasecmp(pointerS->reBorrow,"/no")==0)
-                    {
-                         strcpy(pointerS->reBorrow,"");
-                         strcpy(pointerS->reReturn,"");
-                    }
-                    flag=1;
-                    motifyBorrow(pointerS->reBorrow,pointerB->nameB);
-                    motifyBorrow(pointerS->reReturn,no);
-                    printf("    SUCCESS!  \n");
+
+                    strcpy(pointerS->reBorrow,"");
+                    strcpy(pointerS->reReturn,"");
                 }
+                flag=1;
+                motifyBorrow(pointerS->reBorrow,pointerB->nameB);
+                motifyBorrow(pointerS->reReturn,no);
+                printf("    SUCCESS!  \n");
             }
+        }
     }
     if(flag==0)
-         printf("   Fail! Can't find this book  \n");
+        printf("   Fail! Can't find this book  \n");
     return;
 }
 /*implement student to borrow books, there are two ways:serial number or name and writer to find book.
@@ -102,6 +105,7 @@ if choose sure return , system will finish this operation
 */
 void bookReturn(Book *Bhead,Student *Shead,int ID)
 {
+
     Student *pointerS;
     pointerS=Shead;
     while(pointerS->next!=NULL)
@@ -135,8 +139,8 @@ void bookReturn(Book *Bhead,Student *Shead,int ID)
              pointerB=pointerB->next;
              if(pointerB->serialNum==sern)
              {
-                     flag=1;
-                     break;
+                 flag=1;
+                 break;
              }
         }
     }
@@ -149,29 +153,36 @@ void bookReturn(Book *Bhead,Student *Shead,int ID)
         gets(writer);
         while(pointerB->next!=NULL)
         {
-             pointerB=pointerB->next;
-             if(strcasecmp(pointerB->nameB,name)==0&&strcasecmp(pointerB->writer,writer)==0)
-             {
-                     flag=1;
-                     break;
-             }
+
+            pointerB=pointerB->next;
+            if(strcasecmp(pointerB->nameB,name)==0&&strcasecmp(pointerB->writer,writer)==0)
+            {
+                flag=1;
+                break;
+            }
         }
     }
     int ch=checkRepeat(pointerS->reBorrow,pointerB->nameB);
     if(flag==1&&ch!=0)
     {
-          int choice1=0;
-            printf("   %d  %s  %s  %d  %d\n",pointerB->serialNum,pointerB->nameB,pointerB->writer,pointerB->totalNum,pointerB->leftNum);
-                printf("  SURE RETURN?(1.yes|2.no): ");          //ensure again
-                scanf("%d",&choice1);
-                if(choice1==1)
-                {
-                    char no[]="no";
-                    pointerB->leftNum=pointerB->leftNum+1;
-                    motifyReturn(pointerS->reBorrow,pointerB->nameB);
-                    motifyReturn(pointerS->reReturn,no);
-                    printf("    SUCCESS ! \n");
-                }
+
+        int choice1=0;
+        printf("   %d  %s  %s  %d  %d\n",pointerB->serialNum,pointerB->nameB,pointerB->writer,pointerB->totalNum,pointerB->leftNum);
+        printf("  SURE RETURN?(1.yes|2.no): ");          //ensure again
+        scanf("%d",&choice1);
+        if(choice1==1)
+        {
+            char no[]="no";
+            char in[]="/no";
+            pointerB->leftNum=pointerB->leftNum+1;
+            motifyReturn(pointerS->reBorrow,pointerB->nameB);
+            motifyReturn(pointerS->reReturn,no);
+            printf("    SUCCESS ! \n");
+            if(strcasecmp(pointerS->reBorrow,"")==0)
+                strcpy(pointerS->reBorrow,in);
+            if(strcasecmp(pointerS->reReturn,"")==0)
+                strcpy(pointerS->reReturn,in);
+        }
     }
     if(flag==0)                                            //input information is not in book's linked list
         printf("   Fail! Can't find this book  \n");
